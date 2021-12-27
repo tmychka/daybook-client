@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import SignUpForm from "./components/SignUpForm";
 import SignInForm from "./components/SignInForm";
 
@@ -6,21 +6,27 @@ import './authorization.css'
 
 
 function Authorization() {
-  const [isSignInMode, setIsSignInMode] = useState(true);
+  const [mode, setMode] = useState('sign-in');
 
   return (
     <div>
       <div className="sign">
-        <span className="s-in"
-              onClick={() => setIsSignInMode(true)}>
-                Sign In
+        <span
+          className="s-in"
+          onClick={() => setMode('sign-in')}
+        >
+          Sign In
         </span>
-        <span className="s-up"
-              onClick={() => setIsSignInMode(false)}>
-                Sign Up
+        <span
+          className="s-up"
+          onClick={() => setMode('sign-up')}
+        >
+          Sign Up
         </span>
       </div>
-      { isSignInMode ? <SignInForm /> : <SignUpForm /> }
+
+      {mode === 'sign-in' && <SignInForm />}
+      {mode === 'sign-up' && <SignUpForm />}
     </div>
   );
 };
