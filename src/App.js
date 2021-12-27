@@ -1,18 +1,25 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Authorization from './pages/authorization/Authorization';
 import Dashboard from './components/Dashboard/dashboard'
 
 import './App.css';
 
+const isAuth = true;
+
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router>
         <Routes>
-           <Route path="/" element={<Authorization />} /> 
-           <Route path="/Dashboard" element={<Dashboard />} /> 
+          {isAuth ? (
+            <>
+              <Route path="/" element={<Dashboard />} />
+            </>
+          ) : (
+            <Route path="/" element={<Authorization />} />
+          )}
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 }

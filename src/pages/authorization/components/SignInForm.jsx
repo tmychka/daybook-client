@@ -1,30 +1,29 @@
-import {useState} from "react";
-// import { Link } from 'react-router-dom';
+import { useState } from "react";
 
-import '../authorization.css'
+import '../authorization.css';
 
 function SignInForm() {
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleEmail = (e) => {
-    setEmail(e.target.value)
-  }
+  const handleEmail = ({ target }) => {
+    setEmail(target.value);
+  };
 
-  const handlePassword = (e) => {
-    setPassword(e.target.value)
-  }
+  const handlePassword = ({ target }) => {
+    setPassword(target.value);
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
     console.log(
       {
         email: email,
         password: password
       }
-    )
-  }
+    );
+  };
 
   return (
     <div className="form">
@@ -40,14 +39,12 @@ function SignInForm() {
         </div>
         <div className="mb-3">
           <label className="form-label">Password</label>
-          <input 
+          <input
             type="password"
             className="form-control"
             onChange={handlePassword} />
         </div>
-        {/* <Link to="Dashboard"> */}
-          <button type="submit" className="btn btn-primary">Submit</button>
-        {/* </Link> */}
+        <button type="submit" className="btn btn-primary">Submit</button>
       </form>
    </div>
   );
