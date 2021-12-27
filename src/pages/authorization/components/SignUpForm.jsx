@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import { Link } from 'react-router-dom';
+import {useState} from "react";
+// import { Link } from 'react-router-dom';
 
 import '../authorization.css'
 
@@ -38,35 +38,35 @@ function SignUpForm() {
         <div className="mb-3">
           <label className="form-label">Name</label>
           <input 
-                type="text"
-                className="form-control"
-                onChange={handleName} 
-                value={name}
+            type="text"
+            className="form-control"
+            onChange={handleName} 
+            value={name}
           />
         </div>
         <div className="mb-3">
           <label className="form-label">Email address</label>
           <input 
-                type="email"
-                className="form-control"
-                onChange={handleEmail}
-                value={email}
+            type="email"
+            className="form-control"
+            onChange={handleEmail}
+            value={email}
           />
           <div className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
           <label className="form-label">Password</label>
           <input 
-                type="password"
-                className="form-control"
-                onChange={handlePassword}
-                value={password} />
+            type="password"
+            className="form-control"
+            onChange={handlePassword}
+            value={password} />
         </div>
         {/* <Link to="Dashboard"> */}
           <button 
-                  type="submit"
-                  className="btn btn-primary">
-                    Submit
+            type="submit"
+            className="btn btn-primary">
+              Submit
           </button>
         {/* </Link> */}
       </form>
