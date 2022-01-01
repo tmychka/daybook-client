@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Quicksand:wght@400;600&display=swap');
 
+.authorization {
+  height: 100%;
+}
+
+.authorization-form {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .form  {
   background-color: rgb(241, 241, 241);
   border: 2px solid rgb(226, 226, 226);
@@ -10,18 +22,24 @@
 }
 
 .sign {
-  display: flex;
-  justify-content: space-between;
   font-family: 'Josefin Sans', sans-serif; 
   font-size: 18px;
-  margin: 2px 5px;
 }
 
 .s-in, .s-up {
   cursor: pointer;
   color: rgb(90, 90, 90);
   font-weight: 700;
+  position: relative;
   transition: .5s;
+}
+
+.s-in {
+  right: 100px;
+}
+
+.s-up {
+  left: 100px;
 }
 
 .s-in:hover, .s-up:hover {

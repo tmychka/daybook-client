@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Authorization from './pages/authorization/Authorization';
-import Dashboard from './components/Dashboard/dashboard'
+import Dashboard from './pages/dashboard/Dashboard'
 
 import './App.css';
 
-const isAuth = true;
+const isAuth = false;
 
 function App() {
   return (
@@ -22,6 +22,6 @@ function App() {
       </Router>
     </div>
   );
-}
+};
 
 export default App;
