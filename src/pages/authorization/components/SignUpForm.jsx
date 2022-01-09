@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import '../authorization.css';
 
-function SignUpForm() {
+function SignUpForm({ setMode }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,36 +37,46 @@ function SignUpForm() {
     <div className="form">
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
             onChange={handleName}
             value={name}
+            placeholder="Name"
           />
         </div>
         <div className="mb-3">
-          <label className="form-label">Email address</label>
           <input
             type="email"
             className="form-control"
             onChange={handleEmail}
             value={email}
+            placeholder="email"
           />
-          <div className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
-          <label className="form-label">Password</label>
           <input
             type="password"
             className="form-control"
             onChange={handlePassword}
-            value={password} />
+            value={password} 
+            placeholder="password"
+          />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button
+          type="submit"
+          className="btn btn-primary left">
+          Create shelter
         </button>
       </form>
+      <div className="entrance">
+        <p>Aware already?</p>
+        <span
+          className="s-in"
+          onClick={() => setMode('sign-in')}>
+          Dive here 
+        </span>
+      </div>
     </div>
   );
 };

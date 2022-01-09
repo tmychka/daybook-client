@@ -11,25 +11,13 @@ function Authorization() {
   return (
     <div className="authorization">
       <div className="authorization-form">
-        <div className="sign">
-          <span
-            className="s-in"
-            onClick={() => setMode('sign-in')}
-          >
-            Sign In
-          </span>
-          <span
-            className="s-up"
-            onClick={() => setMode('sign-up')}
-          >
-            Sign Up
-          </span>
-        </div>
-          {mode === 'sign-in' && <SignInForm />}
-          {mode === 'sign-up' && <SignUpForm />}
+        <p className="authorization-p">Welcome aboard, buddy!</p>  
+        {mode === 'sign-in' && <SignInForm setMode={setMode}/>}
+        {mode === 'sign-up' && <SignUpForm setMode={setMode}/>}
       </div>
     </div>
   );
 };
 
 export default Authorization;
+

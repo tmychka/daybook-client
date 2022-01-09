@@ -5,6 +5,7 @@
 }
 
 .authorization-form {
+  background: linear-gradient(0, rgba(231, 255, 19, 0.466), rgba(167, 8, 8, 0.815));
   height: 100%;
   display: flex;
   align-items: center;
@@ -13,12 +14,18 @@
 }
 
 .form  {
-  background-color: rgb(241, 241, 241);
-  border: 2px solid rgb(226, 226, 226);
   color: rgb(0, 0, 0);
   padding: 20px;
   width: 400px;
   font-family: 'Josefin Sans', sans-serif;
+}
+
+.authorization-p {
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
 }
 
 .sign {
@@ -35,13 +42,29 @@
 }
 
 .s-in {
-  right: 100px;
+  left: 10px;
+  padding: 0;
 }
 
 .s-up {
-  left: 100px;
+  left: 10px;
 }
 
 .s-in:hover, .s-up:hover {
   color: rgb(0, 0, 0);
+}
+
+.left {
+  margin: 0 109px;
+  font-size: 18px;
+}
+
+.entrance {
+  display: flex;  
+  justify-content: center;
+  margin: 20px 0 0;
+}
+
+.entrance p, span {
+  font-size: 18px;
 }
