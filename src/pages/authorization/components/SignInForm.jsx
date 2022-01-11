@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import '../authorization.css';
 
-function SignInForm({ setMode }) {
+function SignInForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -44,21 +44,8 @@ function SignInForm({ setMode }) {
             placeholder='password'
             />
         </div>
-        <button
-          type="submit" 
-          className="btn btn-primary left">
-          Create shelter
-        </button>
       </form>
-      <div className="entrance">
-        <p>Aware already?</p>
-        <span
-          className="s-up"
-          onClick={() => setMode('sign-up')}>
-          Dive here 
-        </span>
-      </div>
-   </div>
+    </div>
   );
 };
 

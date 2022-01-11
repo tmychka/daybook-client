@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import '../authorization.css';
 
-function SignUpForm({ setMode }) {
+function SignUpForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -63,20 +63,7 @@ function SignUpForm({ setMode }) {
             placeholder="password"
           />
         </div>
-        <button
-          type="submit"
-          className="btn btn-primary left">
-          Create shelter
-        </button>
       </form>
-      <div className="entrance">
-        <p>Aware already?</p>
-        <span
-          className="s-in"
-          onClick={() => setMode('sign-in')}>
-          Dive here 
-        </span>
-      </div>
     </div>
   );
 };
