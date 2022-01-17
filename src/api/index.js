@@ -1,6 +1,6 @@
  import axios from "axios";
 
-const API_URL = false ? 'https://mydaybook.herokuapp.com' : 'http://localhost:5000';
+const API_URL = true ? 'https://mydaybook.herokuapp.com' : 'http://localhost:5000';
 
 // `baseURL` is prepended to URLs passed to axios
 axios.defaults.baseURL = API_URL;
