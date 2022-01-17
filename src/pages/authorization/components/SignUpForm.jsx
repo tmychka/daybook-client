@@ -1,36 +1,29 @@
 import { useState } from "react";
-// import api from '../api';
 
-import '../authorization.css';
+import api from '../api';
 
-function SignUpForm() {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const initialUser = {
+  name: '',
+  email: '',
+  password: '',
+};
 
-  const handleName = ({ target }) => {
-    setName(target.value);
-  };
+function SignUpForm({
+  onModeChange,
+  onSubmitSuccess,
+}) {
+  const [user, setUser] = useState(initialUser);
 
-  const handleEmail = ({ target }) => {
-    setEmail(target.value);
-  };
-
-  const handlePassword = ({ target }) => {
-    setPassword(target.value);
+  const handleUserChange = ({ target: { name, value } }) => {
+    setUser(prevUser => ({ ...prevUser, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const user = {
-      name: name,
-      email: email,
-      password: password
-    };
-
-    // api.createUser(user);
-    console.log(user);
+    api.createUser(user).then(({ data }) => {
+      onSubmitSuccess(data);
+    });
   };
 
   return (
@@ -39,29 +32,42 @@ function SignUpForm() {
         <div className="mb-3">
           <input
             type="text"
+            name="full_name"
             className="form-control"
-            onChange={handleName}
-            value={name}
-            placeholder="Name"
+            onChange={handleUserChange}
+            value={user.full_name}
+            placeholder="Full Name"
           />
         </div>
         <div className="mb-3">
           <input
             type="email"
+            name="email"
+            value={user.email}
+            placeholder="Email"
             className="form-control"
-            onChange={handleEmail}
-            value={email}
-            placeholder="email"
+            onChange={handleUserChange}
           />
         </div>
         <div className="mb-3">
           <input
             type="password"
-            className="form-control"
-            onChange={handlePassword}
-            value={password} 
+            name="password"
+            value={user.password}
             placeholder="password"
+            className="form-control"
+            onChange={handleUserChange}
           />
+        </div>
+        <div>
+          <button type="submit" className="btn btn-dark left">Create shelter</button>
+        </div>
+        <hr />
+        <div className="entrance">
+          <p>Aware already?</p>
+          <span className="s-in-up" onClick={() => onModeChange('sign-in')}>
+            Dive here
+          </span>
         </div>
       </form>
     </div>

@@ -1,14 +1,17 @@
-import http from '../../../api'
+import http, { setAuthToken } from '../../../api';
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  createSession(username, password) {
-    return http.post("/session", { username, password });
+export { setAuthToken };
+
+const api = {
+  checkLogin() {
+    return http.get('/check_login');
   },
-  deleteSession() {
-    return http.delete("/session", {});
+  loginUser(user) {
+    return http.post('/login', user);
   },
   createUser(user) {
-    return http.post("/users", user);
-  }
+    return http.post('/users', user);
+  },
 };
+
+export default api;

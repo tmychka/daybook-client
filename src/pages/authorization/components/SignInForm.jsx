@@ -1,8 +1,11 @@
 import { useState } from "react";
 
-import '../authorization.css';
+import api from '../api';
 
-function SignInForm() {
+function SignInForm({
+  onModeChange,
+  onSubmitSuccess,
+}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -17,12 +20,12 @@ function SignInForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(
-      {
-        email: email,
-        password: password
-      }
-    );
+    api.loginUser({
+      email: email,
+      password: password,
+    }).then(({ data }) => {
+      onSubmitSuccess(data);
+    });
   };
 
   return (
@@ -43,6 +46,18 @@ function SignInForm() {
             onChange={handlePassword}
             placeholder='password'
             />
+        </div>
+        <div>
+          <button type="submit" className="btn btn-dark left">Dive in</button>
+        </div>
+        <hr />
+        <div className="entrance">
+          <p>No shelter?</p>
+            <span
+              className="s-in-up"
+              onClick={() => onModeChange('sign-up')}>
+              Dive here
+            </span>
         </div>
       </form>
     </div>

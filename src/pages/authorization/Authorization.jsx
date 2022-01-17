@@ -1,45 +1,58 @@
-import { useState } from "react";
-import SignUpForm from "./components/SignUpForm";
-import SignInForm from "./components/SignInForm";
+import { useState, useEffect, useCallback, useContext } from 'react';
 
-import './authorization.css';
+import SignUpForm from './components/SignUpForm';
+import SignInForm from './components/SignInForm';
 
+import api, { setAuthToken } from './api';
+import { AppDispatchContext } from '../../contexts';
+import { getLocalStorageItem, setLocalStorageItem } from '../../utils/localStorage';
+
+import './authorization.scss';
 
 function Authorization() {
+  const dispatch = useContext(AppDispatchContext);
+
   const [mode, setMode] = useState('sign-in');
-  const signIn = mode === 'sign-in'
-  const signUp = mode === 'sign-up'
+
+  const handleSubmitSuccess = useCallback(({ token, ...user }) => {
+    if (token) {
+      setAuthToken(token);
+      setLocalStorageItem('db_auth_token', token);
+    }
+
+    dispatch({ type: 'ADD_USER', user });
+  }, []);
+
+  useEffect(() => {
+    const authToken = getLocalStorageItem('db_auth_token');
+
+    if (authToken) {
+      setAuthToken(authToken);
+      api.checkLogin().then(({ data }) => {
+        handleSubmitSuccess(data);
+      });
+    }
+  }, []);
 
   return (
     <div className="authorization">
       <div className="authorization-form">
-        <p className="authorization-p">Welcome aboard, buddy!</p>  
-        {signIn && <SignInForm />}
-        {signUp && <SignUpForm />}
-        <div>
-          <button type="submit" className="btn btn-dark left">Create shelter</button>
-        </div>
-        <hr />
-        <div className="entrance">
-          <p>Aware already?</p>
-          {signUp ? 
-            <span
-              className="s-in-up"
-              onClick={() => setMode('sign-in')}>
-              Dive here 
-            </span>
-            :
-            <span
-              className="s-in-up"
-              onClick={() => setMode('sign-up')}>
-              Dive here 
-            </span>
-          }
-        </div>
+        <p className="authorization-p">Welcome aboard, buddy!</p>
+        {mode === 'sign-in' && (
+          <SignInForm
+            onModeChange={setMode}
+            onSubmitSuccess={handleSubmitSuccess}
+          />
+        )}
+        {mode === 'sign-up' && (
+          <SignUpForm
+            onModeChange={setMode}
+            onSubmitSuccess={handleSubmitSuccess}
+          />
+        )}
       </div>
     </div>
   );
 };
 
 export default Authorization;
-
