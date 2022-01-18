@@ -24,29 +24,16 @@
 
 .form  {
   color: rgb(0, 0, 0);
-  width: 400px;
+  width: 360px;
   font-family: 'Josefin Sans', sans-serif;
   margin: 0 20px;
 }
 
 .form-control {
-  display: block;
   text-align: center;
-  width: 80%;
   padding: 0.475rem 0;
-  margin: 0 auto 25px;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  background-color: rgb(255, 255, 255);
-  background-clip: padding-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
   border-bottom-left-radius: 50px;
   border-top-right-radius: 50px;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 input::placeholder {

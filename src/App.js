@@ -1,5 +1,5 @@
 import { useReducer, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import Authorization from './pages/authorization/Authorization';
 import Dashboard from './pages/dashboard/Dashboard';
@@ -23,12 +23,14 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  const navigate = useNavigate();
   const isAuthorized = Boolean(state.user);
 
   useEffect(() => {
     const handleLogout = () => {
       setLocalStorageItem('db_auth_token', null);
       dispatch({ type: 'DELETE_USER' });
+      navigate('/');
     };
 
     document.addEventListener('logout', handleLogout);

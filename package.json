@@ -7,6 +7,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
@@ -26,20 +27,49 @@
       "react-app/jest"
     ],
     "rules": {
-      "array-bracket-spacing": ["error", "never"],
-      "block-spacing": ["error", "always"],
-      "comma-dangle": ["error", {
-        "arrays": "always-multiline",
-        "objects": "always-multiline",
-        "imports": "always-multiline",
-        "exports": "always-multiline",
-        "functions": "always-multiline"
-      }],
-      "comma-spacing": ["error", { "before": false, "after": true }],
-      "eol-last": ["error", "always"],
-      "no-unneeded-ternary": ["error", { "defaultAssignment": false }],
-      "object-curly-spacing": ["error", "always"],
-      "semi": ["error", "always"]
+      "array-bracket-spacing": [
+        1,
+        "never"
+      ],
+      "block-spacing": [
+        1,
+        "always"
+      ],
+      "comma-dangle": [
+        1,
+        {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "imports": "always-multiline",
+          "exports": "always-multiline",
+          "functions": "always-multiline"
+        }
+      ],
+      "comma-spacing": [
+        1,
+        {
+          "before": false,
+          "after": true
+        }
+      ],
+      "eol-last": [
+        1,
+        "always"
+      ],
+      "no-unneeded-ternary": [
+        1,
+        {
+          "defaultAssignment": false
+        }
+      ],
+      "object-curly-spacing": [
+        1,
+        "always"
+      ],
+      "semi": [
+        1,
+        "always"
+      ]
     }
   },
   "browserslist": {
