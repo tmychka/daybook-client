@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 
 import Authorization from './pages/authorization/Authorization';
 import Dashboard from './pages/dashboard/Dashboard';
+import Journal from "./pages/journal/Journal";
 
 import { AppDispatchProvider, AppStateProvider } from './contexts';
 import { setLocalStorageItem } from './utils/localStorage';
@@ -48,6 +49,7 @@ function App() {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
+                <Route path="/journal" element={<Journal />} />
               </Routes>
             </BrowserRouter>
           </AppStateProvider>

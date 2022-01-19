@@ -1,0 +1,19 @@
+.journal {
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  position: absolute;
+  background: linear-gradient(0, rgb(22, 22, 22), rgb(14, 13, 13));
+}
+
+.journal-title {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+
+.journal-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
