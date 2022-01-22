@@ -21,6 +21,7 @@ function SignUpForm({
 
   const handleUserChange = ({ target: { name, value } }) => {
     setUser(prevUser => ({ ...prevUser, [name]: value }));
+    setErrors(prevErrors => prevErrors[name] ? { ...prevErrors, [name]: '' } : prevErrors);
   };
 
   const handleSubmit = (e) => {
