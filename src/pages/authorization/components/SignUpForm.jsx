@@ -92,7 +92,10 @@ function SignUpForm({
 
       <p className="entrance">
         Aware already?&nbsp;
-        <span className="s-in-up" onClick={() => onModeChange('sign-in')}>
+        <span
+          className="s-in-up" 
+          onClick={() => onModeChange('sign-in')}
+        >
           Dive here
         </span>
       </p>

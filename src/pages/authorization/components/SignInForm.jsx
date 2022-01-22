@@ -35,8 +35,8 @@ function SignInForm({
   };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <div className="mb-3">
+    <form className="form d-flex flex-column align-items-center" onSubmit={handleSubmit}>
+      <div className="w-100 mb-3">
         <input
           type="email"
           name="email"
@@ -46,7 +46,7 @@ function SignInForm({
           placeholder="email"
         />
       </div>
-      <div className="mb-3">
+      <div className="w-100 mb-3">
         <input
           type="password"
           name="password"
@@ -74,7 +74,8 @@ function SignInForm({
         <p>No shelter?</p>
           <span
             className="s-in-up"
-            onClick={() => onModeChange('sign-up')}>
+            onClick={() => onModeChange('sign-up')}
+          >
             Dive here
           </span>
       </div>
