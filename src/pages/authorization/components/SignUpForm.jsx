@@ -39,7 +39,7 @@ function SignUpForm({
   };
 
   const renderError = errorName => errors[errorName] && (
-    <div class="invalid-feedback d-block text-center">{errors[errorName]}</div>
+    <div className="invalid-feedback d-block text-center">{errors[errorName]}</div>
   );
 
   return (

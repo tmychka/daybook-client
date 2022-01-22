@@ -27,6 +27,7 @@ function Authorization() {
     const authToken = getLocalStorageItem('db_auth_token');
 
     if (authToken) {
+
       setAuthToken(authToken);
       api.checkLogin().then(({ data }) => {
         handleSubmitSuccess(data);
@@ -35,6 +36,7 @@ function Authorization() {
   }, []);
 
   return (
+    
     <div className="authorization">
       <div className="authorization-form">
         <p className="authorization-p">Welcome aboard, buddy!</p>

@@ -24,14 +24,14 @@ function reducer(state, action) {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const isAuthorized = Boolean(state.user);
 
   useEffect(() => {
     const handleLogout = () => {
       setLocalStorageItem('db_auth_token', null);
       dispatch({ type: 'DELETE_USER' });
-      navigate('/');
+      // navigate('/');
     };
 
     document.addEventListener('logout', handleLogout);
@@ -59,7 +59,7 @@ function App() {
               <Route path="/" element={<Authorization />} />
             </Routes>
           </BrowserRouter>
-        )}
+        )} 
       </AppDispatchProvider>
     </div>
   );

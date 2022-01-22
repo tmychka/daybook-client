@@ -2,65 +2,83 @@ import { useState } from "react";
 
 import api from '../api';
 
+const initialUser = {
+  email: '',
+  password: '',
+};
+
 function SignInForm({
   onModeChange,
   onSubmitSuccess,
 }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState(initialUser);
+  const [errors, setErrors] = useState('');
 
-  const handleEmail = ({ target }) => {
-    setEmail(target.value);
+  const hasUnfilled = Object.values(user).some(value => !value.trim());
+  const isSubmitDisabled = hasUnfilled || !!errors;
+
+  const handleUserChange = ({ target: { name, value } }) => {
+    setUser(prevUser => ({ ...prevUser, [name]: value }));
+    setErrors('');
   };
-
-  const handlePassword = ({ target }) => {
-    setPassword(target.value);
-  };
-
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    api.loginUser({
-      email: email,
-      password: password,
-    }).then(({ data }) => {
+    api.loginUser(user)
+      .then(({ data }) => {
       onSubmitSuccess(data);
+    })
+    .catch(({ response }) => {
+      setErrors(response.data.errors);
     });
   };
 
   return (
-    <div className="form">
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <input
-            type="email"
-            className="form-control"
-            onChange={handleEmail}
-            placeholder="email"
+    <form className="form" onSubmit={handleSubmit}>
+      <div className="mb-3">
+        <input
+          type="email"
+          name="email"
+          className="form-control"
+          value={user.email}
+          onChange={handleUserChange}
+          placeholder="email"
+        />
+      </div>
+      <div className="mb-3">
+        <input
+          type="password"
+          name="password"
+          className="form-control"
+          value={user.password}
+          onChange={handleUserChange}
+          placeholder='password'
           />
-        </div>
-        <div className="mb-3">
-          <input
-            type="password"
-            className="form-control"
-            onChange={handlePassword}
-            placeholder='password'
-            />
-        </div>
-        <div>
-          <button type="submit" className="btn btn-dark left">Dive in</button>
-        </div>
-        <hr />
-        <div className="entrance">
-          <p>No shelter?</p>
-            <span
-              className="s-in-up"
-              onClick={() => onModeChange('sign-up')}>
-              Dive here
-            </span>
-        </div>
-      </form>
-    </div>
+          {errors && (
+            <div className="invalid-feedback d-block text-center">{errors}</div>
+          )}
+      </div>
+  
+      <button 
+        type="submit"
+        disabled={isSubmitDisabled} 
+        className="btn btn-dark left"
+      >
+        Dive in
+      </button>
+
+      <hr />
+
+      <div className="entrance">
+        <p>No shelter?</p>
+          <span
+            className="s-in-up"
+            onClick={() => onModeChange('sign-up')}>
+            Dive here
+          </span>
+      </div>
+    </form>
   );
 };
 
